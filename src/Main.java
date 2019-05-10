@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String userChoice = "";
-        while (userChoice != "q") {
-            System.out.printf("*******************\nWelcome to GOMOKU!\n*******************");
+        while (!userChoice.equals("q")) {
+            System.out.println("*******************\nWelcome to GOMOKU!\n*******************");
             while (!(userChoice.equals("s") || userChoice.equals("m") || userChoice.equals("r") || userChoice.equals("q"))) {
                 System.out.println("Please choose Singleplayer (s), Multiplayer (m), Ranking (r) or Quit (q): ");
                 userChoice = input.nextLine();
