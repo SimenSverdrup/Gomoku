@@ -20,7 +20,13 @@ public class Main {
                     multi.play();
                 case "r":
                     Ranking ranking = new Ranking();
-                    ranking.seeRanking();
+                    ranking.displayScore();
+                    String rankingChoice = "";
+                    while ((rankingChoice !="r") || (rankingChoice !="m")) {
+                        System.out.println("Reset score (r) or return to main menu (m): ");
+                        rankingChoice = input.nextLine();
+                    }
+                    if (rankingChoice == "r") { ranking.resetScore(); } //we don't need to check for "m"
                 case "q":
                     continue;
             }
