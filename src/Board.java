@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Board {
-    private char[][] board = new char[15][15];
+    public char[][] board = new char[15][15];
     private HashMap<Character, Integer> map = new HashMap<Character, Integer>();
     private String alphabet = "ABCDEFGHIJKLMNO";
 

@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String userChoice = "";
-
         while (!userChoice.equals("q")) {
             userChoice = "";
             System.out.println("********************\n Welcome to GOMOKU!\n********************");
