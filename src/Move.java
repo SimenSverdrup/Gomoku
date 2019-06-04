@@ -1,7 +1,9 @@
+import static java.lang.Character.toUpperCase;
+
 public class Move extends Board {
 
     public boolean checkEmpty(Character A, int b) {
-        int a = map.get(A); //map from Board.class
+        int a = map.get(toUpperCase(A)); //map from Board.class
         if(board[a][b]=='o'|| board[a][b]=='x') {
             System.out.printf("\nThis place is not empty. Please put the stone in other place\n");
             return false; //not empty
@@ -10,7 +12,7 @@ public class Move extends Board {
     }
 
     public boolean withinBoard(Character A, int b) {
-        int a = map.get(A);
+        int a = map.get(toUpperCase(A));
         if(a<1||a>15) {
             System.out.printf("\nThis place is not in the board input other place\n");
             return false;
@@ -20,6 +22,26 @@ public class Move extends Board {
             return false;
         }
         return true; //position is within board
+    }
+
+    public boolean legalMove(String position) {
+        Character A;
+        int b = 0;
+        int length = position.length();
+        if (length > 3 || length < 2) {
+            return false;
+        }
+        A = toUpperCase(position.charAt(0));
+        switch (length) {
+            case 2:
+                b = Character.getNumericValue(position.charAt(1));
+            case 3:
+                b = Integer.parseInt(position.substring(1));
+        }
+        if ((withinBoard(A, b) && checkEmpty(A, b))) {
+            return true;
+        }
+        return false;
     }
 
     public boolean gameFinished(Character A, int b) {

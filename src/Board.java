@@ -30,7 +30,7 @@ public class Board {
         }
     }
 
-    public void insertRock(String pos) { //we check if the move is legal in multi/single-player
+    public void insertRock(String pos, Character rock) { //we check if the move is legal in multi/single-player
                                         //(by legalMove() in Move.class), not here
         int YPos;
         if (pos.length() == 2) {
@@ -45,6 +45,6 @@ public class Board {
         char XPosChar = pos.charAt(0);
         int XPos = map.get(XPosChar);
 
-        board[YPos-1][XPos] = 'O';
+        board[YPos-1][XPos] = rock;
     }
 }

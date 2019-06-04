@@ -15,7 +15,7 @@ public class Main {
             switch (userChoice) {
                 case "s":
                     Singleplayer single = new Singleplayer();
-                    //single.play();
+                    single.play();
                     break;
                 case "m":
                     Multiplayer multi = new Multiplayer();
