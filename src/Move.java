@@ -1,19 +1,16 @@
-
 public class Move extends Board {
 
-    public boolean checkEmpty(char[][] board,int a,int b) {
-        board= new char[15][15];
-
+    public boolean checkEmpty(Character A, int b) {
+        int a = map.get(A); //map from Board.class
         if(board[a][b]=='o'|| board[a][b]=='x') {
-            //System.out.printf("This place is not empty put the stone in other place");
+            System.out.printf("\nThis place is not empty. Please put the stone in other place\n");
             return false; //not empty
         }
         return true; //empty
     }
 
-    public boolean withinBoard(char[][] board,int a, int b) {
-        board= new char[15][15];
-
+    public boolean withinBoard(Character A, int b) {
+        int a = map.get(A);
         if(a<1||a>15) {
             System.out.printf("\nThis place is not in the board input other place\n");
             return false;
@@ -22,12 +19,12 @@ public class Move extends Board {
             System.out.printf("\nThis place is not in the board input other place\n");
             return false;
         }
-        return true;
+        return true; //position is within board
     }
 
-    public boolean gameFinished(char[][] board,int a, int b) {
-        board= new char[15][15];
+    public boolean gameFinished(Character A, int b) {
 
+        int a = map.get(A);
         int num1=0;//세로 vertical
         int num2=0;//가로 horizontal
         int num3=0;//오른대각선 right
@@ -107,8 +104,8 @@ public class Move extends Board {
 
     }
 
-    /*public boolean threeAndThreeRule(char[][]board, int a,int b) {
-        board= new char[15][15];
+    /*public boolean threeAndThreeRule(Character A,int b) {
+        int a = map.get(A);
 
     }*/
 }
