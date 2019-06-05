@@ -58,7 +58,7 @@ public class Move extends Board {
         int num4=0;//왼쪽대각선 left
 
         for(int i=1;i<5;i++) {
-            if(board[a+i][b]!='o') {
+            if(board[a+i][b]!=board[a][b]) {
                 break;
             }
             else {
@@ -66,7 +66,7 @@ public class Move extends Board {
             }
         }
         for(int i=1;i<5;i++) {
-            if(board[a-i][b]!='o') {
+            if(board[a-i][b]!=board[a][b]) {
                 break;
             }
             else {
@@ -74,7 +74,7 @@ public class Move extends Board {
             }
         } //num1 5개인지 검사
         for(int i=1;i<5;i++) {
-            if(board[a][b+1]!='o') {
+            if(board[a][b+1]!=board[a][b]) {
                 break;
             }
             else {
@@ -82,7 +82,7 @@ public class Move extends Board {
             }
         }
         for(int i=1;i<5;i++) {
-            if(board[a][b-i]!='o') {
+            if(board[a][b-i]!=board[a][b]) {
                 break;
             }
             else {
@@ -90,7 +90,7 @@ public class Move extends Board {
             }
         } //num2 5개인지 검사
         for(int i=1;i<5;i++) {
-            if(board[a-i][b+i]!='o') {
+            if(board[a-i][b+i]!=board[a][b]) {
                 break;
             }
             else {
@@ -98,7 +98,7 @@ public class Move extends Board {
             }
         }
         for(int i=1;i<5;i++) {
-            if(board[a+i][b-i]!='o') {
+            if(board[a+i][b-i]!=board[a][b]) {
                 break;
             }
             else {
@@ -106,7 +106,7 @@ public class Move extends Board {
             }
         } //num3 5개인지 검사
         for(int i=1;i<5;i++) {
-            if(board[a-i][b-i]!='o') {
+            if(board[a-i][b-i]!=board[a][b]) {
                 break;
             }
             else {
@@ -114,7 +114,7 @@ public class Move extends Board {
             }
         }
         for(int i=1;i<5;i++) {
-            if(board[a+i][b+i]!='o') {
+            if(board[a+i][b+i]!=board[a][b]) {
                 break;
             }
             else {
