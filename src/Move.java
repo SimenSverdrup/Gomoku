@@ -27,12 +27,11 @@ public class Move extends Board {
     public boolean legalMove(String position) {
         Character A;
         int b = 0;
-        int length = position.length();
-        if (length > 3 || length < 2) {
+        if (position.length() > 3 || position.length() < 2) {
             return false;
         }
         A = toUpperCase(position.charAt(0));
-        switch (length) {
+        switch (position.length()) {
             case 2:
                 b = Character.getNumericValue(position.charAt(1));
             case 3:
@@ -44,9 +43,15 @@ public class Move extends Board {
         return false;
     }
 
-    public boolean gameFinished(Character A, int b) {
-
-        int a = map.get(A);
+    public boolean gameFinished(String position) {
+        int b = 0;
+        char a = toUpperCase(position.charAt(0));
+        switch (position.length()) {
+            case 2:
+                b = Character.getNumericValue(position.charAt(1));
+            case 3:
+                b = Integer.parseInt(position.substring(1));
+        }
         int num1=0;//세로 vertical
         int num2=0;//가로 horizontal
         int num3=0;//오른대각선 right

@@ -20,7 +20,7 @@ public class Singleplayer {
     }
 
     public String AIMove() {
-        //TO-DO
+        //TODO
         String move = "F5";//something;
         return move;
     }
@@ -33,18 +33,18 @@ public class Singleplayer {
         board.displayBoard();
 
         while (!isGameFinished) {
-            System.out.println("\nChoose your move: "); //user starts
+            System.out.println("\nChoose your move (e.g. 'B6'): "); //user starts
             position = input.nextLine();
             legalMove = move.legalMove(position);
 
             while (!legalMove) {
-                System.out.println("Illegal move. Choose your move: "); //user starts
+                System.out.println("Illegal move. Choose your move (e.g. 'B6'): "); //user starts
                 position = input.nextLine();
                 legalMove = move.legalMove(position);
             }
             board.insertRock(position, 'o');
             board.displayBoard();
-            isGameFinished = move.gameFinished(A, b);
+            isGameFinished = move.gameFinished(position);
             if (isGameFinished) {
                 System.out.printf("\n%s won!\n", playerName);
                 ranking.appendScore(playerName, "AI", counter);
@@ -55,14 +55,13 @@ public class Singleplayer {
                 catch (InterruptedException e){System.out.println("Sleeping error!"); }
                 board.insertRock(AIMove(), 'x');
                 board.displayBoard();
-                isGameFinished = move.gameFinished(A, b);
+                isGameFinished = move.gameFinished(position);
                 if (isGameFinished) {
                     System.out.printf("\nAI won!\n");
                     ranking.appendScore("AI", playerName, counter);
                 }
             }
             counter++;
-        //TODO: initialize A and b
         }
     }
 }
