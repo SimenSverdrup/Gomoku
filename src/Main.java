@@ -6,7 +6,7 @@ public class Main {
         String userChoice = "";
         while (!userChoice.equals("q")) {
             userChoice = "";
-            System.out.println("********************\n Welcome to GOMOKU!\n********************");
+            System.out.println("\n********************\n Welcome to GOMOKU!\n********************");
             while (!(userChoice.equals("s") || userChoice.equals("m") || userChoice.equals("r") || userChoice.equals("q"))) {
                 System.out.println("\nPlease choose Singleplayer (s), Multiplayer (m), Ranking (r) or Quit (q): ");
                 userChoice = input.nextLine().toLowerCase();

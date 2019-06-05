@@ -14,6 +14,7 @@ public class Ranking {
                 System.out.println(line);
             }
             bufferedReader.close();
+            System.out.println();
         }
         catch (IOException e) {
             System.out.println("Unable to access highscore-file.");

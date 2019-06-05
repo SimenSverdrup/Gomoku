@@ -11,16 +11,18 @@ public class Singleplayer {
     private boolean legalMove;
     private int counter;
 
-    public Singleplayer() {
+    public Singleplayer() { //constructor
         board = new Board();
         move = new Move();
         ranking = new Ranking();
         isGameFinished = false;
-        counter = 0;
+        counter = 1;
     }
 
     public String AIMove() {
         //TODO
+
+
         String move = "F5";//something;
         return move;
     }

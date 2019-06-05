@@ -1,5 +1,7 @@
 import java.util.HashMap;
 
+import static java.lang.Character.toUpperCase;
+
 public class Board {
     char[][] board = new char[15][15];
     HashMap<Character, Integer> map = new HashMap<Character, Integer>();
@@ -30,20 +32,16 @@ public class Board {
         }
     }
 
-    public void insertRock(String pos, Character rock) { //we check if the move is legal in multi/single-player
+    public void insertRock(String pos, char rock) { //we check if the move is legal in multi/single-player
                                         //(by legalMove() in Move.class), not here
-        int YPos;
+        int YPos, XPos;
+        XPos = map.get(toUpperCase(pos.charAt(0)));
         if (pos.length() == 2) {
-            char YPosChar = pos.charAt(1);
-            YPos = Character.getNumericValue(YPosChar);
+            YPos = Character.getNumericValue(pos.charAt(1));
         }
         else {//pos.length() == 3, check this in legalMove()
-            String YPosString = pos.substring(1);
-            YPos = Integer.parseInt(YPosString);
+            YPos = Integer.parseInt(pos.substring(1));
         }
-
-        char XPosChar = pos.charAt(0);
-        int XPos = map.get(XPosChar);
 
         board[YPos-1][XPos] = rock;
     }
