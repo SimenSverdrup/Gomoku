@@ -18,14 +18,6 @@ public class Singleplayer {
         counter = 1;
     }
 
-    public String AIMove() {
-        //TODO
-
-
-        String move = "F5";//something;
-        return move;
-    }
-
     public void play() {
         String position;
         Scanner input = new Scanner(System.in);
@@ -46,6 +38,7 @@ public class Singleplayer {
             }
             board.insertRock(position, 'o');
             board.displayBoard();
+            move = new Move(board.board);
             isGameFinished = move.gameFinished(position);
             if (isGameFinished) {
                 System.out.printf("\n%s won!\n\n", playerName);
@@ -55,7 +48,8 @@ public class Singleplayer {
                 System.out.println("AI is thinking...\nAI plays:");
                 try {TimeUnit.SECONDS.sleep(1);}
                 catch (InterruptedException e){System.out.println("Sleeping error!"); }
-                board.insertRock(AIMove(), 'x');
+                AI ai = new AI(board.board);
+                board.insertRock(ai.AIMove(), 'x');
                 board.displayBoard();
                 isGameFinished = move.gameFinished(position);
                 if (isGameFinished) {

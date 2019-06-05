@@ -3,7 +3,7 @@ import java.util.HashMap;
 import static java.lang.Character.toUpperCase;
 
 public class Board {
-    char[][] board = new char[15][15];
+    public char[][] board = new char[15][15];
     HashMap<Character, Integer> map = new HashMap<Character, Integer>();
     private String alphabet = "ABCDEFGHIJKLMNO";
 
@@ -21,9 +21,10 @@ public class Board {
     }
 
     public void displayBoard() {
-        System.out.print("\n   A B C D E F G H I J K L M N O\n");
+        System.out.print("\n  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\n");
+
         for (int i=0; i<15; i++) {
-            System.out.printf("%d ", i+1);
+            System.out.printf("%c", alphabet.charAt(i));
             if (i<9) {System.out.print(" ");}
             for (int j=0; j<15; j++) {
                 System.out.printf("%c ", board[i][j]);
@@ -43,6 +44,6 @@ public class Board {
             YPos = Integer.parseInt(pos.substring(1));
         }
 
-        board[YPos-1][XPos] = rock;
+        board[XPos][YPos-1] = rock;
     }
 }
