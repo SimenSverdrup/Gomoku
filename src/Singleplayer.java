@@ -13,7 +13,6 @@ public class Singleplayer {
 
     public Singleplayer() { //constructor
         board = new Board();
-        move = new Move();
         ranking = new Ranking();
         isGameFinished = false;
         counter = 1;
@@ -35,6 +34,7 @@ public class Singleplayer {
         board.displayBoard();
 
         while (!isGameFinished) {
+            move = new Move(board.board);
             System.out.println("\nChoose your move (e.g. 'B6'): "); //user starts
             position = input.nextLine();
             legalMove = move.legalMove(position);
@@ -48,7 +48,7 @@ public class Singleplayer {
             board.displayBoard();
             isGameFinished = move.gameFinished(position);
             if (isGameFinished) {
-                System.out.printf("\n%s won!\n", playerName);
+                System.out.printf("\n%s won!\n\n", playerName);
                 ranking.appendScore(playerName, "AI", counter);
             }
             else {
@@ -59,7 +59,7 @@ public class Singleplayer {
                 board.displayBoard();
                 isGameFinished = move.gameFinished(position);
                 if (isGameFinished) {
-                    System.out.printf("\nAI won!\n");
+                    System.out.printf("\nAI won!\n\n");
                     ranking.appendScore("AI", playerName, counter);
                 }
             }

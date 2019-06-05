@@ -1,22 +1,26 @@
 import static java.lang.Character.toUpperCase;
 
-public class Move extends Board {
+public class Move extends Board{
 
-    public boolean checkEmpty(Character A, int b) {
-        int a = map.get(toUpperCase(A)); //map from Board.class
-        b--;
-        if(board[a][b]=='o'|| board[a][b]=='x') {
-            System.out.printf("\nThis place is not empty. Please put the stone in other place\n");
+    public Move(char[][] board) {
+        this.board = board;
+    }
+
+    public boolean checkEmpty(int a, int b) {
+        char o = 'o';
+        char x = 'x';
+        b--;  //zero-indexing
+        if((board[a][b] == o) || (board[a][b] == x)) {
+            System.out.println("This place is not empty. Please put the stone in other place\n");
             return false; //not empty
         }
         return true; //empty
     }
 
-    public boolean withinBoard(Character A, int b) {
-        int a = map.get(toUpperCase(A));
+    public boolean withinBoard(int a, int b) {
         b--; //zero-indexing
         if(a<0||a>15) {
-            System.out.printf("\nThis place is not in the board input other place\n");
+            System.out.println("This place is not in the board input other place\n");
             return false;
         }
         else if(b<0||b>15) {
@@ -27,19 +31,18 @@ public class Move extends Board {
     }
 
     public boolean legalMove(String position) {
-        Character A;
+        int a = map.get(toUpperCase(position.charAt(0)));
         int b = 0;
         if (position.length() > 3 || position.length() < 2) {
             return false;
         }
-        A = toUpperCase(position.charAt(0));
         switch (position.length()) {
             case 2:
                 b = Character.getNumericValue(position.charAt(1));
             case 3:
                 b = Integer.parseInt(position.substring(1));
         }
-        if ((withinBoard(A, b) && checkEmpty(A, b))) {
+        if ((withinBoard(a, b) && checkEmpty(a, b))) {
             return true;
         }
         return false;
@@ -55,10 +58,11 @@ public class Move extends Board {
                 b = Integer.parseInt(position.substring(1));
         }
         b--; //because of 0-indexing
+
         int num1=0;//세로 vertical
         int num2=0;//가로 horizontal
-        int num3=0;//오른대각선 right
-        int num4=0;//왼쪽대각선 left
+        int num3=0;//오른대각선 diagonal1
+        int num4=0;//왼쪽대각선 diagonal2
 
         for(int i=1; i<Math.min(15-a,5); i++) {
             if(board[a+i][b] != board[a][b]) {
@@ -77,7 +81,7 @@ public class Move extends Board {
             }
         } //num1 5개인지 검사
         for(int i=1; i<Math.min(15-b,5); i++) {
-            if(board[a][b+1] != board[a][b]) {
+            if(board[a][b+i] != board[a][b]) {
                 break;
             }
             else {
