@@ -77,7 +77,7 @@ public class Move extends Board {
             }
         } //num1 5개인지 검사
         for(int i=1; i<Math.min(15-b,5); i++) {
-            if(board[a][b+1] != board[a][b]) {
+            if(board[a][b+i] != board[a][b]) {
                 break;
             }
             else {
