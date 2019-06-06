@@ -23,97 +23,390 @@ public class AI extends Board {
     }
 
     public String AIMove(String position) {
-        int num1;//세로 vertical
-        int num2;//가로 horizontal
-        int num3;//오른대각선 diagonal1
-        int num4;//왼쪽대각선 diagonal2
-        int b = 0;
-        int a = map2.get(toUpperCase(position.charAt(0)));
-        switch (position.length()) {
-            case 2:
-                b = Character.getNumericValue(position.charAt(1));
-            case 3:
-                b = Integer.parseInt(position.substring(1));
-        }
-        b--; //because of 0-indexing
+       for (int a=0; a<15; a++) {
+            for (int b=0; b<15; b++) {
+                if(board[a][b] == ' ') {
+                    int num1 = 0;//세로 vertical
+                    int num2 = 0;//가로 horizontal
+                    int num3 = 0;//오른대각선 diagonal1
+                    int num4 = 0;//왼쪽대각선 diagonal2
+                    
+                    int numcon =2;
+                    board[a][b]='o';
+	                    for(int i=1; i<Math.min(15-a,5); i++) {
+	                        	if(board[a+i][b]=='o') {
+	                        		numcon+=2;
+	                        	}
+	                        	else if(board[a+i][b]=='x') {
+	                        		break;
+	                        	}
+	                        	else {
+	                        		numcon++;
+	                        	}
+	                    }
+	                    for(int i=1; i<Math.min(a+1, 5); i++) {
+	                    	if(board[a-i][b]=='o') {
+                        		numcon+=2;
+                        	}
+                        	else if(board[a-i][b]=='x') {
+                        		break;
+                        	}
+                        	else {
+                        		numcon++;
+                        	}
+	                    }
+	                    //  switch to value
+	                    	switch(numcon) {
+	                    	case 2:numcon=0;
+	                    		break;
+	                    	case 3:numcon=2;
+	                    		break;
+	                    	case 4:numcon=5;
+	                    		break;
+	                    	case 5:numcon=10;
+	                    		break;
+	                    	case 6:numcon=25;
+	                    		break;
+	                    	case 7:numcon=50;
+	                    		break;
+	                    	case 8:numcon=100;
+	                    		break;
+	                    	case 9:numcon=200;
+	                    		break;
+	                    	case 10:numcon=1000;
+	                    		break;
+	                    	default: numcon=0;	
+	                    	}
+	                    num1=numcon;//num1 points
+	                    numcon=2;
+	                    for(int i=1; i<Math.min(15-b,5); i++) {
+	                        if(board[a][b+i] == 'o') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a][b+i]==' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    }
+	                    for(int i=1; i<Math.min(b+1,5); i++) {
+	                        if(board[a][b-i] =='o') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a][b-i]==' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    } 
+	                    switch(numcon) {
+                    	case 2:numcon=0;
+                    		break;
+                    	case 3:numcon=2;
+                    		break;
+                    	case 4:numcon=5;
+                    		break;
+                    	case 5:numcon=10;
+                    		break;
+                    	case 6:numcon=25;
+                    		break;
+                    	case 7:numcon=50;
+                    		break;
+                    	case 8:numcon=100;
+                    		break;
+                    	case 9:numcon=200;
+                    		break;
+                    	case 10:numcon=1000;
+                    		break;
+                    	default: numcon=0;	
+                    	}
+	                    num2=numcon;//num2 5개인지 검사
+	                    numcon=2;
+	                    
+	                    for(int i=1; i<Math.min(Math.min(a+1, 5), 15-b); i++) {
+	                        if(board[a-i][b+i] == 'o') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a-i][b+i]==' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    }
+	                    for(int i=1; i<Math.min(Math.min(5, b+1), 15-a) ;i++) {
+	                        if(board[a+i][b-i] == 'o') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a+i][b-i] == ' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    } 
+	                    switch(numcon) {
+                    	case 2:numcon=0;
+                    		break;
+                    	case 3:numcon=2;
+                    		break;
+                    	case 4:numcon=5;
+                    		break;
+                    	case 5:numcon=10;
+                    		break;
+                    	case 6:numcon=25;
+                    		break;
+                    	case 7:numcon=50;
+                    		break;
+                    	case 8:numcon=100;
+                    		break;
+                    	case 9:numcon=200;
+                    		break;
+                    	case 10:numcon=1000;
+                    		break;
+                    	default: numcon=0;	
+                    	}
+	                    num3=numcon;//num3 5개인지 검사
+	                    numcon=2;
+	                    
+	                    for(int i=1; i<Math.min(Math.min(5, a+1), b+1); i++) {
+	                        if(board[a-i][b-i] == 'o') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a-i][b-i] == ' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    }
+	                    for(int i=1;i<Math.min(Math.min(5, 15-a), 15-b);i++) {
+	                        if(board[a+i][b+i]=='o') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a+i][b+i]==' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    } 
+	                    switch(numcon) {
+                    	case 2:numcon=0;
+                    		break;
+                    	case 3:numcon=2;
+                    		break;
+                    	case 4:numcon=5;
+                    		break;
+                    	case 5:numcon=10;
+                    		break;
+                    	case 6:numcon=25;
+                    		break;
+                    	case 7:numcon=50;
+                    		break;
+                    	case 8:numcon=100;
+                    		break;
+                    	case 9:numcon=200;
+                    		break;
+                    	case 10:numcon=1000;
+                    		break;
+                    	default: numcon=0;	
+                    	}
+	                    num4=numcon;//num4 5개인지 검사
+	                    numcon=2;
 
-        for (int index1=0; index1<15; index1++) {
-            for (int j=0; j<15; j++) {
-                if(board[index1][j] == ' ') {
-                    num1 = 0;//세로 vertical
-                    num2 = 0;//가로 horizontal
-                    num3 = 0;//오른대각선 diagonal1
-                    num4 = 0;//왼쪽대각선 diagonal2
-
-                    for(int i=1; i<Math.min(15-a,5); i++) {
-                        if(board[a+i][b] != board[a][b]) {
-                            break;
-                        }
-                        else {
-                            num1++;
-                        }
-                    }
-                    for(int i=1; i<Math.min(a+1, 5); i++) {
-                        if(board[a-i][b] != board[a][b]) {
-                            break;
-                        }
-                        else {
-                            num1++;
-                        }
-                    } //num1 5개인지 검사
-                    for(int i=1; i<Math.min(15-b,5); i++) {
-                        if(board[a][b+i] != board[a][b]) {
-                            break;
-                        }
-                        else {
-                            num2++;
-                        }
-                    }
-                    for(int i=1; i<Math.min(b+1,5); i++) {
-                        if(board[a][b-i] != board[a][b]) {
-                            break;
-                        }
-                        else {
-                            num2++;
-                        }
-                    } //num2 5개인지 검사
-                    for(int i=1; i<Math.min(Math.min(a+1, 5), 15-b); i++) {
-                        if(board[a-i][b+i] != board[a][b]) {
-                            break;
-                        }
-                        else {
-                            num3++;
-                        }
-                    }
-                    for(int i=1; i<Math.min(Math.min(5, b+1), 15-a) ;i++) {
-                        if(board[a+i][b-i] != board[a][b]) {
-                            break;
-                        }
-                        else {
-                            num3++;
-                        }
-                    } //num3 5개인지 검사
-                    for(int i=1; i<Math.min(Math.min(5, a+1), b+1); i++) {
-                        if(board[a-i][b-i] != board[a][b]) {
-                            break;
-                        }
-                        else {
-                            num4++;
-                        }
-                    }
-                    for(int i=1;i<Math.min(Math.min(5, 15-a), 15-b);i++) {
-                        if(board[a+i][b+i]!=board[a][b]) {
-                            break;
-                        }
-                        else {
-                            num4++;
-                        }
-                    } //num4 5개인지 검사
-
-
+                    
+                    ///////////////////////////////////////////////////////////
+                   board[a][b]='x';
+                    	for(int i=1; i<Math.min(15-a,5); i++) {
+                        	if(board[a+i][b]=='x') {
+                        		numcon+=2;
+                        	}
+                        	else if(board[a+i][b]=='o') {
+                        		break;
+                        	}
+                        	else {
+                        		numcon++;
+                        	}
+	                    }
+	                    for(int i=1; i<Math.min(a+1, 5); i++) {
+	                    	if(board[a-i][b]=='x') {
+	                    		numcon+=2;
+	                    	}
+	                    	else if(board[a-i][b]=='o') {
+	                    		break;
+	                    	}
+	                    	else {
+	                    		numcon++;
+	                    	}
+	                    } 
+	                    switch(numcon) {
+                    	case 2:numcon=0;
+                    		break;
+                    	case 3:numcon=2;
+                    		break;
+                    	case 4:numcon=5;
+                    		break;
+                    	case 5:numcon=10;
+                    		break;
+                    	case 6:numcon=25;
+                    		break;
+                    	case 7:numcon=50;
+                    		break;
+                    	case 8:numcon=100;
+                    		break;
+                    	case 9:numcon=200;
+                    		break;
+                    	case 10:numcon=1000;
+                    		break;
+                    	default: numcon=0;	
+                    	}
+	                    num1+=numcon;//num1 points
+	                    numcon=2;
+	                    
+	                    for(int i=1; i<Math.min(15-b,5); i++) {
+	                        if(board[a][b+i] == 'x') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a][b+i]==' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    }
+	                    for(int i=1; i<Math.min(b+1,5); i++) {
+	                        if(board[a][b-i] =='x') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a][b-i]==' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    } 
+	                    switch(numcon) {
+                    	case 2:numcon=0;
+                    		break;
+                    	case 3:numcon=2;
+                    		break;
+                    	case 4:numcon=5;
+                    		break;
+                    	case 5:numcon=10;
+                    		break;
+                    	case 6:numcon=25;
+                    		break;
+                    	case 7:numcon=50;
+                    		break;
+                    	case 8:numcon=100;
+                    		break;
+                    	case 9:numcon=200;
+                    		break;
+                    	case 10:numcon=1000;
+                    		break;
+                    	default: numcon=0;	
+                    	}
+	                    num2+=numcon;//num2 5개인지 검사
+	                    numcon=2;
+	                    
+	                    for(int i=1; i<Math.min(Math.min(a+1, 5), 15-b); i++) {
+	                        if(board[a-i][b+i] == 'x') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a-i][b+i]==' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    }
+	                    for(int i=1; i<Math.min(Math.min(5, b+1), 15-a) ;i++) {
+	                        if(board[a+i][b-i] == 'x') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a+i][b-i] == ' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    } 
+	                    switch(numcon) {
+                    	case 2:numcon=0;
+                    		break;
+                    	case 3:numcon=2;
+                    		break;
+                    	case 4:numcon=5;
+                    		break;
+                    	case 5:numcon=10;
+                    		break;
+                    	case 6:numcon=25;
+                    		break;
+                    	case 7:numcon=50;
+                    		break;
+                    	case 8:numcon=100;
+                    		break;
+                    	case 9:numcon=200;
+                    		break;
+                    	case 10:numcon=1000;
+                    		break;
+                    	default: numcon=0;	
+                    	}
+	                    num3+=numcon;//num3 5개인지 검사
+	                    numcon=2;
+	                    
+	                    for(int i=1; i<Math.min(Math.min(5, a+1), b+1); i++) {
+	                        if(board[a-i][b-i] == 'x') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a-i][b-i] == ' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    }
+	                    for(int i=1;i<Math.min(Math.min(5, 15-a), 15-b);i++) {
+	                        if(board[a+i][b+i]=='x') {
+	                            numcon+=2;
+	                        }
+	                        else if(board[a+i][b+i]==' '){
+	                            numcon++;
+	                        }
+	                        else {
+	                        	break;
+	                        }
+	                    } 
+	                    switch(numcon) {
+                    	case 2:numcon=0;
+                    		break;
+                    	case 3:numcon=2;
+                    		break;
+                    	case 4:numcon=5;
+                    		break;
+                    	case 5:numcon=10;
+                    		break;
+                    	case 6:numcon=25;
+                    		break;
+                    	case 7:numcon=50;
+                    		break;
+                    	case 8:numcon=100;
+                    		break;
+                    	case 9:numcon=200;
+                    		break;
+                    	case 10:numcon=1000;
+                    		break;
+                    	default: numcon=0;	
+                    	}
+	                    num4+=numcon;//num4 5개인지 검사
+	                   board[a][b]=' ';
+             
                 }
                 else {
-                    valueBoard[index1][j] = 0;
+                    valueBoard[a][b] = 0;
                 }
             }
         }
