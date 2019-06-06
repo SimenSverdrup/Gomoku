@@ -773,8 +773,8 @@ public class AI extends Board {
                     	default: numcon=0;	
                     	}
 	                    num4+=numcon;//num4 5개인지 검사
-	                   board[a][b]=' ';
-             
+	                    board[a][b]=' ';
+	                    valueBoard[a][b] = num1 + num2 + num3 + num4;
                 }
                 else {
                     valueBoard[a][b] = 0;
