@@ -49,7 +49,7 @@ public class Singleplayer {
                 try {TimeUnit.SECONDS.sleep(1);}
                 catch (InterruptedException e){System.out.println("Sleeping error!"); }
                 AI ai = new AI(board.board);
-                board.insertRock(ai.AIMove(), 'x');
+                board.insertRock(ai.AIMove(position), 'x');
                 board.displayBoard();
                 isGameFinished = move.gameFinished(position);
                 if (isGameFinished) {

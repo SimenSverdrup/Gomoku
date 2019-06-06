@@ -7,10 +7,8 @@ public class Move extends Board{
     }
 
     public boolean checkEmpty(int a, int b) {
-        char o = 'o';
-        char x = 'x';
         b--;  //zero-indexing
-        if((board[a][b] == o) || (board[a][b] == x)) {
+        if((board[a][b] == 'o') || (board[a][b] == 'x')) {
             System.out.println("This place is not empty. Please put the stone in other place\n");
             return false; //not empty
         }
