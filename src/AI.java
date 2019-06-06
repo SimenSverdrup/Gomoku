@@ -18,7 +18,7 @@ public class AI extends Board {
         }
     }
 
-    public String AIMove(String position) {
+    public String AIMove() {
         int max;
         int Ypos;
         int Xpos;
@@ -779,6 +779,7 @@ public class AI extends Board {
                 else {
                     valueBoard[a][b] = 0;
                 }
+                System.out.printf("\nValue at %d, %d: %d", a, b, valueBoard[a][b]);
             }
         }
         max = -1;
@@ -794,7 +795,6 @@ public class AI extends Board {
             }
         }
         System.out.printf("\nmax: %d\nYpos: %d\nXpos: %d\n", max, Ypos, Xpos);
-        System.out.printf("\n%s\n", map.get(Xpos).toString() + Integer.toString(Ypos));
         return map.get(Xpos).toString() + Integer.toString(Ypos);
     }
 }
