@@ -27,7 +27,7 @@ public class Multiplayer {
         board.displayBoard();
 
         while (!isGameFinished) {
-        	if(counter%2==1) {
+        	if(counter%2 == 1) {
 	            move = new Move(board.board);
 	            System.out.printf("\n%s Choose your move (e.g. 'B6'): \n",playerName1); //user starts
 	            position = input.nextLine();

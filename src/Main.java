@@ -19,7 +19,7 @@ public class Main {
                     break;
                 case "m":
                     Multiplayer multi = new Multiplayer();
-                    //multi.play();
+                    multi.play();
                     break;
                 case "r":
                     Ranking ranking = new Ranking();

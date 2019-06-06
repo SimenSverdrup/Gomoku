@@ -24,9 +24,9 @@ public class Board {
         System.out.print("\n  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\n");
 
         for (int i=0; i<15; i++) {
-            System.out.printf("%c", alphabet.charAt(i));
-            if (i<9) {System.out.print(" ");}
+            System.out.printf("%c ", alphabet.charAt(i));
             for (int j=0; j<15; j++) {
+                if (j>9) { System.out.print(' '); }
                 System.out.printf("%c ", board[i][j]);
                 if (j == 14) { System.out.println(); }
             }
