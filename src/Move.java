@@ -136,8 +136,265 @@ public class Move extends Board{
 
     }
 
-    /*public boolean threeAndThreeRule(Character A,int b) {
-        int a = map.get(A);
-
-    }*/
+   public boolean ThreeThreerule(String position){
+    	 int b = 0;
+         int a = map.get(toUpperCase(position.charAt(0)));
+         switch (position.length()) {
+             case 2:
+                 b = Character.getNumericValue(position.charAt(1));
+             case 3:
+                 b = Integer.parseInt(position.substring(1));
+         }
+         b--; //because of 0-indexing
+         
+		int num1=1;
+		int num2=1;
+		int[] check= new int[4];
+		check[0]=0;check[1]=0;check[2]=0;check[3]=0;
+		
+			for(int i=1;i<Math.min(15-a,3);i++) {
+				if(board[a+i][b]==board[a][b]) {
+					num1++;
+					for(int j=1; j<Math.min(15-b,3); j++) {
+			            if(board[a+i][b+j] != board[a][b]) {
+			                break ;
+			            }
+			            else {
+			            	num2++;
+			            }
+			        }
+			        for(int j=1; j<Math.min(b+1,3); i++) {
+			            if(board[a+i][b-j] != board[a][b]) {
+			                break;
+			            }
+			            else {
+			                num2++;
+			            }
+			        }//
+			        if(num2==3) {
+			        	check[0]=1;
+			        }
+			        num2=1;
+				}
+				else {
+					break;
+				}
+			}
+			for(int i=1;i<Math.min(a+1, 3);i++) {
+				if(board[a-i][b]==board[a][b]) {
+					num1++;
+					for(int j=1; j<Math.min(15-b,3); j++) {
+			            if(board[a-i][b+j] != board[a][b]) {
+			                break ;
+			            }
+			            else {
+			            	num2++;
+			            }
+			        }
+			        for(int j=1; j<Math.min(b+1,3); i++) {
+			            if(board[a-i][b-j] != board[a][b]) {
+			                break;
+			            }
+			            else {
+			                num2++;
+			            }
+			           
+			        }
+			        if(num2==3) {
+			        	check[0]=1;
+			        }
+			        num2=1;
+				}
+				else {
+					break;
+				}
+			}//vertical////////////////////////////////////////////////////////////////
+		num1=1;
+		num2=1;
+				
+		 	for(int i=1; i<Math.min(15-b,3); i++) {
+	            if(board[a][b+i] != board[a][b]) {
+	                break ;
+	            }
+	            else {
+	            	num2++;
+	            	for(int j=1; j<Math.min(15-a,3); j++) {
+	                    if(board[a+j][b+i] != board[a][b]) {
+	                        break;
+	                    }
+	                    else {
+	                        num1++;
+	                    }
+	                }
+	                for(int j=1; j<Math.min(a+1, 3); j++) {
+	                    if(board[a-j][b+i] != board[a][b]) {
+	                        break;
+	                    }
+	                    else {
+	                        num1++;
+	                    }
+	                }
+	                if(num1==3) {
+	                	check[1]=1;
+	                }
+	                num1=1;
+	            }
+	        }
+	        for(int i=1; i<Math.min(b+1,3); i++) {
+	            if(board[a][b-i] != board[a][b]) {
+	                break;
+	            }
+	            else {
+	                num2++;
+	                for(int j=1; j<Math.min(15-a,3); j++) {
+	                    if(board[a+j][b-i] != board[a][b]) {
+	                        break;
+	                    }
+	                    else {
+	                        num1++;
+	                    }
+	                }
+	                for(int j=1; j<Math.min(a+1, 3); j++) {
+	                    if(board[a-j][b-i] != board[a][b]) {
+	                        break;
+	                    }
+	                    else {
+	                        num1++;
+	                    }
+	                }
+	                if(num1==3) {
+	                	check[1]=1;
+	                }
+	                num1=1;
+	            }
+	        } //horizontal////////////////////////////////////////////////////
+	        int num3=1;
+	        int num4=1;
+	        
+	        for(int i=1; i<Math.min(Math.min(a+1, 3), 15-b); i++) {
+	            if(board[a-i][b+i] != board[a][b]) {
+	                break ;
+	            }
+	            else {
+	                num3++;
+	                for(int j=1; j<Math.min(Math.min(3, a+1), b+1); j++) {
+	    	            if(board[a-j-i][b-j+i] != board[a][b]) {
+	    	                break ;
+	    	            }
+	    	            else {
+	    	                num4++;
+	    	            }
+	    	        }
+	    	        for(int j=1;j<Math.min(Math.min(3, 15-a), 15-b);j++) {
+	    	            if(board[a+j-i][b+j+i]!=board[a][b]) {
+	    	                break;
+	    	            }
+	    	            else {
+	    	                num4++;
+	    	            }
+	    	        }
+	    	        if(num4==3) {
+	    	        	check[2]=1;
+	    	        }
+	    	        num4=1;
+	            }
+	        }
+	        for(int i=1; i<Math.min(Math.min(3, b+1), 15-a) ;i++) {
+	            if(board[a+i][b-i] != board[a][b]) {
+	                break;
+	            }
+	            else {
+	                num3++;
+	                for(int j=1; j<Math.min(Math.min(3, a+1), b+1); j++) {
+	    	            if(board[a-j+i][b-j-i] != board[a][b]) {
+	    	                break ;
+	    	            }
+	    	            else {
+	    	                num4++;
+	    	            }
+	    	        }
+	    	        for(int j=1;j<Math.min(Math.min(3, 15-a), 15-b);j++) {
+	    	            if(board[a+j+i][b+j-i]!=board[a][b]) {
+	    	                break;
+	    	            }
+	    	            else {
+	    	                num4++;
+	    	            }
+	    	        }
+	    	        if(num4==3) {
+	    	        	check[2]=1;
+	    	        }
+	    	        num4=1;
+	            }
+	        } //diagonal1/////////////////////////////////////////////////////////////
+	        num3=1;
+	        num4=1;
+	        
+	        for(int i=1; i<Math.min(Math.min(3, a+1), b+1); i++) {
+	            if(board[a-i][b-i] != board[a][b]) {
+	                break ;
+	            }
+	            else {
+	                num4++;
+	                for(int j=1; j<Math.min(Math.min(a+1, 3), 15-b); j++) {
+	                    if(board[a-j-i][b+j-i] != board[a][b]) {
+	                        break ;
+	                    }
+	                    else {
+	                        num3++;
+	                    }
+	                }
+	                for(int j=1; j<Math.min(Math.min(3, b+1), 15-a) ;j++) {
+	                    if(board[a+j-i][b-j-i] != board[a][b]) {
+	                        break;
+	                    }
+	                    else {
+	                        num3++;
+	                    }
+	                }
+	                if(num3==3) {
+	                	check[3]=1;
+	                }
+	                num3=1;
+	                
+	            }
+	        }
+	        for(int i=1;i<Math.min(Math.min(3, 15-a), 15-b);i++) {
+	            if(board[a+i][b+i]!=board[a][b]) {
+	                break;
+	            }
+	            else {
+	                num4++;
+	                for(int j=1; j<Math.min(Math.min(a+1, 3), 15-b); j++) {
+	                    if(board[a-j+i][b+j+i] != board[a][b]) {
+	                        break ;
+	                    }
+	                    else {
+	                        num3++;
+	                    }
+	                }
+	                for(int j=1; j<Math.min(Math.min(3, b+1), 15-a) ;j++) {
+	                    if(board[a+j+i][b-j+i] != board[a][b]) {
+	                        break;
+	                    }
+	                    else {
+	                        num3++;
+	                    }
+	                } 
+	                if(num3==3) {
+	                	check[3]=1;
+	                }
+	                num3=1;
+	            }
+	        } //diagonal2
+	        
+		
+		
+		
+		if((num1==3&&check[0]==1)||(num2==3&&check[1]==1)||(num3==3&&check[2]==1)||(num4==3&&check[3]==1)) {
+			return true; //obeyed 3and3rule
+		}
+		else
+			return false;
+	}
 }
