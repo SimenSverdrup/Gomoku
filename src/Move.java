@@ -153,7 +153,7 @@ public class Move extends Board{
                         num2++;
                     }
                 }
-                for(int j=1; j<Math.min(b+1,3); i++) {
+                for(int j=1; j<Math.min(b+1,3); j++) {
                     if(board[a+i][b-j] != board[a][b]) {
                         break;
                     }
@@ -181,7 +181,7 @@ public class Move extends Board{
                         num2++;
                     }
                 }
-                for(int j=1; j<Math.min(b+1,3); i++) {
+                for(int j=1; j<Math.min(b+1,3); j++) {
                     if(board[a-i][b-j] != board[a][b]) {
                         break;
                     }
