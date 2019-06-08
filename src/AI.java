@@ -747,7 +747,7 @@ public class AI extends Board {
                 else {
                     valueBoard[a][b] = 0;
                 }
-                System.out.printf("\nValue at %d, %d: %d", a, b, valueBoard[a][b]);
+                System.out.printf("\nValue at %d, %d: %d", a+1, b+1, valueBoard[a][b]);
             }
         }
         max = -1;
@@ -757,15 +757,22 @@ public class AI extends Board {
         for (int i=0; i<15; i++) {
             for (int j = 0; j<15; j++) {
                 if ((valueBoard[i][j] >= max) && (board[i][j] == ' ')) {
-                    max = valueBoard[i][j];
-                    if(random.nextBoolean()) {
-                        Ypos = j + 1;
+                	if(valueBoard[i][j]==max) {
+                		if(random.nextBoolean()) {
+                			max = valueBoard[i][j];
+                			Ypos = j+1;
+                            Xpos = i;
+                        }
+                	}
+                	else {
+                		max = valueBoard[i][j];
+                		Ypos = j+1;
                         Xpos = i;
-                    }
+                	}
                 }
             }
         }
-        System.out.printf("\nmax: %d\nYpos: %d\nXpos: %d\n", max, Ypos, Xpos);
+        System.out.printf("\nValue at %d, %d: %d", Xpos+1,Ypos , max);
         return map.get(Xpos).toString() + Integer.toString(Ypos);
     }
 }
