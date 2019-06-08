@@ -1,8 +1,6 @@
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Character.toUpperCase;
-
 public class Singleplayer {
     private Board board;
     private Move move;
@@ -10,6 +8,7 @@ public class Singleplayer {
     private boolean isGameFinished;
     private boolean legalMove;
     private int counter;
+    private boolean ThreeThreerule;
 
     public Singleplayer() { //constructor
         board = new Board();
@@ -35,6 +34,11 @@ public class Singleplayer {
                 System.out.println("Illegal move. Choose your move (e.g. 'B6'): "); //user starts
                 position = input.nextLine();
                 legalMove = move.legalMove(position);
+            }
+            while (!ThreeThreerule) {
+            	System.out.println("You obeyed the 3and3rule. Choose your move: ");
+            	position = input.nextLine();
+            	ThreeThreerule=move.ThreeThreerule(position);
             }
             board.insertRock(position, 'o');
             board.displayBoard();
