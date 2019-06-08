@@ -29,18 +29,18 @@ public class Move extends Board{
     }
 
     public boolean legalMove(String position) {
-        int a = map.get(toUpperCase(position.charAt(0)));
-        int b = 0;
         if (position.length() > 3 || position.length() < 2) {
             return false;
         }
+        int a = map.get(toUpperCase(position.charAt(0)));
+        int b = 0;
         switch (position.length()) {
             case 2:
                 b = Character.getNumericValue(position.charAt(1));
             case 3:
                 b = Integer.parseInt(position.substring(1));
         }
-        if (withinBoard(a, b) && checkEmpty(a, b) && ThreeThreerule(a, b)) {
+        if (withinBoard(a, b) && checkEmpty(a, b)){ //&& ThreeThreerule(a, b)) {
             return true;
         }
         return false;
