@@ -742,7 +742,7 @@ public class AI extends Board {
                     }
 
                     board[a][b]=' ';
-                    valueBoard[a][b] = num; //num1 + num2 + num3 + num4;
+                    valueBoard[a][b] = value; //num1 + num2 + num3 + num4;
                 }
                 else {
                     valueBoard[a][b] = 0;
@@ -758,10 +758,10 @@ public class AI extends Board {
             for (int j = 0; j<15; j++) {
                 if ((valueBoard[i][j] >= max) && (board[i][j] == ' ')) {
                     max = valueBoard[i][j];
-                    //if(random.nextBoolean()) {
-                    Ypos = j + 1;
-                    Xpos = i;
-                    //}
+                    if(random.nextBoolean()) {
+                        Ypos = j + 1;
+                        Xpos = i;
+                    }
                 }
             }
         }
