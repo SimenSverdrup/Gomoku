@@ -118,6 +118,7 @@ public class AI extends Board {
                         row++;
                     }
                     value+=num;
+                    
 
                     num = 0;
                     numcon = 1;
@@ -384,6 +385,7 @@ public class AI extends Board {
                         row++;
                     }
                     value+=num;
+                    value=2*value;
                     num=0;
                     row=1;
                     numcon = 1;
@@ -737,8 +739,10 @@ public class AI extends Board {
 
 
                     if(numcon==5) {
-                        row=5;
-                        value=1000;
+                        row=5;                        
+                    }
+                    if(row==5) {
+                    	value=1000;
                     }
 
                     board[a][b]=' ';
@@ -747,7 +751,7 @@ public class AI extends Board {
                 else {
                     valueBoard[a][b] = 0;
                 }
-                System.out.printf("\nValue at %d, %d: %d", a+1, b+1, valueBoard[a][b]);
+               
             }
         }
         max = -1;
@@ -772,7 +776,7 @@ public class AI extends Board {
                 }
             }
         }
-        System.out.printf("\nValue at %d, %d: %d", Xpos+1,Ypos , max);
+ 
         return map.get(Xpos).toString() + Integer.toString(Ypos);
     }
 }
