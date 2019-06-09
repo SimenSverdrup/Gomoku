@@ -32,19 +32,21 @@ public class Multiplayer {
 	            move = new Move(board.board);
 	            System.out.printf("\n%s Choose your move (e.g. 'B6'): \n",playerName1); //user starts
 	            position = input.nextLine();
-	            legalMove = move.legalMove(position);
-	            ThreeThreerule=move.ThreeThreerule(position);
+	            legalMove = move.legalMove(position);	           
 	
 	            while (!legalMove) {
 	                System.out.println("Illegal move. Choose your move (e.g. 'B6'): "); //user starts
 	                position = input.nextLine();
 	                legalMove = move.legalMove(position);
 	            }
+	            
+	            ThreeThreerule=move.ThreeThreerule(position);
 	            while(!ThreeThreerule) {
 	            	System.out.println("You obeyed the 3and3rule. Choose your move: ");
 	            	position = input.nextLine();
 	            	ThreeThreerule=move.ThreeThreerule(position);
 	            }
+	            
 	            board.insertRock(position, 'o');
 	            board.displayBoard();
 	            isGameFinished = move.gameFinished(position);
