@@ -29,6 +29,7 @@ public class Singleplayer {
             System.out.println("\nChoose your move (e.g. 'B6'): "); //user starts
             position = input.nextLine();
             legalMove = move.legalMove(position);
+            ThreeThreerule=move.ThreeThreerule(position);
 
             while (!legalMove) {
                 System.out.println("Illegal move. Choose your move (e.g. 'B6'): "); //user starts
