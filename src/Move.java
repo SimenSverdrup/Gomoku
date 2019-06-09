@@ -154,7 +154,7 @@ public class Move extends Board{
         check[0]=0;check[1]=0;check[2]=0;check[3]=0;
 
         for(int i=1;i<Math.min(15-a,3);i++) {
-            if(board[a+i][b]==board[a][b]) {
+            if(board[a+i][b]=='o') {
                 num1++;
             }
                
@@ -163,7 +163,7 @@ public class Move extends Board{
             }
         }
         for(int i=1;i<Math.min(a+1, 3);i++) {
-            if(board[a-i][b]==board[a][b]) {
+            if(board[a-i][b]=='o') {
                 num1++;
                
             }
@@ -174,9 +174,9 @@ public class Move extends Board{
         
         if(num1==3) {
         	for(int i=1;i<Math.min(15-a,3);i++) {
-                if(board[a+i][b]==board[a][b]) {
+                if(board[a+i][b]=='o') {
                 	for(int j=1; j<Math.min(15-b,3); j++) {
-                        if(board[a+i][b+j] == board[a][b]) {
+                        if(board[a+i][b+j] == 'o') {
                             num2++ ;
                         }
                         else {
@@ -184,7 +184,7 @@ public class Move extends Board{
                         }
                     }              
                     for(int j=1; j<Math.min(b+1,3); j++) {
-                        if(board[a+i][b-j] == board[a][b]) {
+                        if(board[a+i][b-j] == 'o') {
                             num2++;
                         }
                         else {
@@ -201,9 +201,9 @@ public class Move extends Board{
                 }
             }
             for(int i=1;i<Math.min(a+1, 3);i++) {
-                if(board[a-i][b]==board[a][b]) {
+                if(board[a-i][b]=='o') {
                 	for(int j=1; j<Math.min(15-b,3); j++) {
-                        if(board[a-i][b+j] == board[a][b]) {
+                        if(board[a-i][b+j] == 'o') {
                             num2++ ;
                         }
                         else {
@@ -211,7 +211,7 @@ public class Move extends Board{
                         }
                     }              
                     for(int j=1; j<Math.min(b+1,3); j++) {
-                        if(board[a-i][b-j] == board[a][b]) {
+                        if(board[a-i][b-j] == 'o') {
                             num2++;
                         }
                         else {
@@ -236,7 +236,7 @@ public class Move extends Board{
        
 
         for(int i=1; i<Math.min(15-b,3); i++) {
-            if(board[a][b+i] == board[a][b]) {
+            if(board[a][b+i] == 'o') {
                 num2++ ;
             }
             else {
@@ -244,7 +244,7 @@ public class Move extends Board{
             }
         }              
         for(int i=1; i<Math.min(b+1,3); i++) {
-            if(board[a][b-i] == board[a][b]) {
+            if(board[a][b-i] == 'o') {
                 num2++;
             }
             else {
@@ -253,9 +253,9 @@ public class Move extends Board{
         } 
         if(num2==3) {
         	for(int i=1; i<Math.min(15-b,3); i++) {
-                if(board[a][b+i] == board[a][b]) {
+                if(board[a][b+i] == 'o') {
                 	for(int j=1;j<Math.min(15-a,3);j++) {
-                        if(board[a+j][b+i]==board[a][b]) {
+                        if(board[a+j][b+i]=='o') {
                             num1++;
                         }
                            
@@ -264,7 +264,7 @@ public class Move extends Board{
                         }
                     }
                     for(int j=1;j<Math.min(a+1, 3);j++) {
-                        if(board[a-j][b+i]==board[a][b]) {
+                        if(board[a-j][b+i]=='o') {
                             num1++;
                            
                         }
@@ -282,9 +282,9 @@ public class Move extends Board{
             } 
         	
             for(int i=1; i<Math.min(b+1,3); i++) {
-                if(board[a][b-i] == board[a][b]) {
+                if(board[a][b-i] == 'o') {
                 	for(int j=1;j<Math.min(15-a,3);j++) {
-                        if(board[a+j][b-i]==board[a][b]) {
+                        if(board[a+j][b-i]=='o') {
                             num1++;
                         }
                            
@@ -293,7 +293,7 @@ public class Move extends Board{
                         }
                     }
                     for(int j=1;j<Math.min(a+1, 3);j++) {
-                        if(board[a-j][b-i]==board[a][b]) {
+                        if(board[a-j][b-i]=='o') {
                             num1++;
                            
                         }
@@ -315,7 +315,7 @@ public class Move extends Board{
        
 
         for(int i=1; i<Math.min(Math.min(a+1, 3), 15-b); i++) {
-            if(board[a-i][b+i] == board[a][b]) {
+            if(board[a-i][b+i] == 'o') {
                 num3++;
             }
             else {
@@ -323,7 +323,7 @@ public class Move extends Board{
             }
         }
         for(int i=1; i<Math.min(Math.min(3, b+1), 15-a) ;i++) {
-            if(board[a+i][b-i] == board[a][b]) {
+            if(board[a+i][b-i] == 'o') {
                num3++;
             }
             else {
@@ -333,9 +333,9 @@ public class Move extends Board{
         
         if(num3==3) {
         	for(int i=1; i<Math.min(Math.min(a+1, 3), 15-b); i++) {
-                if(board[a-i][b+i] == board[a][b]) {
+                if(board[a-i][b+i] == 'o') {
                 	for(int j=1; j<Math.min(Math.min(3, a+1), b+1); j++) {
-                        if(board[a-j-i][b-j+i] == board[a][b]) {
+                        if(board[a-j-i][b-j+i] == 'o') {
                             num4++;
                         }
                         else {
@@ -343,7 +343,7 @@ public class Move extends Board{
                         }
                     }
                     for(int j=1;j<Math.min(Math.min(3, 15-a), 15-b);j++) {
-                        if(board[a+j-i][b+j+i]==board[a][b]) {
+                        if(board[a+j-i][b+j+i]=='o') {
                             num4++;
                         }
                         else {
@@ -359,9 +359,9 @@ public class Move extends Board{
                 }
             }
             for(int i=1; i<Math.min(Math.min(3, b+1), 15-a) ;i++) {
-                if(board[a+i][b-i] == board[a][b]) {
+                if(board[a+i][b-i] == 'o') {
                 	for(int j=1; j<Math.min(Math.min(3, a+1), b+1); j++) {
-                        if(board[a-j+i][b-j-i] == board[a][b]) {
+                        if(board[a-j+i][b-j-i] == 'o') {
                             num4++;
                         }
                         else {
@@ -369,7 +369,7 @@ public class Move extends Board{
                         }
                     }
                     for(int j=1;j<Math.min(Math.min(3, 15-a), 15-b);j++) {
-                        if(board[a+j+i][b+j-i]==board[a][b]) {
+                        if(board[a+j+i][b+j-i]=='o') {
                             num4++;
                         }
                         else {
@@ -392,7 +392,7 @@ public class Move extends Board{
         //diagonal1/////////////////////////////////////////////////////////////
 
         for(int i=1; i<Math.min(Math.min(3, a+1), b+1); i++) {
-            if(board[a-i][b-i] == board[a][b]) {
+            if(board[a-i][b-i] == 'o') {
                 num4++;
             }
             else {
@@ -400,7 +400,7 @@ public class Move extends Board{
             }
         }
         for(int i=1;i<Math.min(Math.min(3, 15-a), 15-b);i++) {
-            if(board[a+i][b+i]==board[a][b]) {
+            if(board[a+i][b+i]=='o') {
                 num4++;
             }
             else {
@@ -409,9 +409,9 @@ public class Move extends Board{
         } 
         if(num4==3) {
         	for(int i=1; i<Math.min(Math.min(3, a+1), b+1); i++) {
-                if(board[a-i][b-i] == board[a][b]) {
+                if(board[a-i][b-i] == 'o') {
                 	for(int j=1; j<Math.min(Math.min(a+1, 3), 15-b); j++) {
-                        if(board[a-j-i][b+j-i] == board[a][b]) {
+                        if(board[a-j-i][b+j-i] == 'o') {
                             num3++;
                         }
                         else {
@@ -419,7 +419,7 @@ public class Move extends Board{
                         }
                     }
                     for(int j=1; j<Math.min(Math.min(3, b+1), 15-a) ;j++) {
-                        if(board[a+j-i][b-j-i] == board[a][b]) {
+                        if(board[a+j-i][b-j-i] == 'o') {
                            num3++;
                         }
                         else {
@@ -435,9 +435,9 @@ public class Move extends Board{
                 }
             }
             for(int i=1;i<Math.min(Math.min(3, 15-a), 15-b);i++) {
-                if(board[a+i][b+i]==board[a][b]) {
+                if(board[a+i][b+i]=='o') {
                 	for(int j=1; j<Math.min(Math.min(a+1, 3), 15-b); j++) {
-                        if(board[a-j+i][b+j+i] == board[a][b]) {
+                        if(board[a-j+i][b+j+i] == 'o') {
                             num3++;
                         }
                         else {
@@ -445,7 +445,7 @@ public class Move extends Board{
                         }
                     }
                     for(int j=1; j<Math.min(Math.min(3, b+1), 15-a) ;j++) {
-                        if(board[a+j+i][b-j+i] == board[a][b]) {
+                        if(board[a+j+i][b-j+i] == 'o') {
                            num3++;
                         }
                         else {
